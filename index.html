@@ -1,0 +1,321 @@
+<!doctype html>
+<html>
+<head>
+
+	<!-- Place this data between the <head> tags of your website -->
+	<title>Wealth Distribution - a playable post on economic inequality</title>
+	<meta name="description" content="A playable post on how economic inequality can be improved" />
+	<link rel="icon" type="image/png" href="favicon.png">
+
+	<!-- CSS -->
+	<link href="css/index.css" rel="stylesheet" type="text/css">
+
+</head>
+<body>
+
+	<!-- SPLASH -->
+	<div id="intro_container">
+		<div id="intro">
+			<iframe src="play/intro/intro.html" id="intro_background" scrolling="no"></iframe>
+		</div>
+	</div>
+
+	<!-- CHAPTER -->
+	<div class="chapter">
+
+		<p><strong>This is a story of how economic inequality takes place and how we can diminish it.</strong></p>
+		<p>
+			Let's start with a simple environment, where there are only patches of grains.
+			Each patch has an amount of grain and a grain capacity (the amount of grain it can grow).
+			As shown in the graph below, the darker a green patch, the higher its grain capacity. 
+		</p>
+
+		<img src="play/img/grain_environment.png" width="400" height="400" scrolling="no" style="margin:0 auto;display:block">
+
+		<p>
+			Then we have people collecting grain from the patches. 
+			They need to eat the grain to survive and how much grain each person accumulates is his or her wealth.
+			The model begins with a roughly equal wealth distribution. 
+			The people then wander around the landscape gathering as much grain as they can. 
+			Each person attempts to move in the direction where the most grain lies. 
+			Each time tick, each person eats a certain amount of grain. 
+			This amount is called their metabolism. 
+			People also have a life expectancy. 
+			When their lifespan runs out, or they run out of grain, they die and produce a single offspring. 
+			The offspring has a random metabolism and a random amount of grain, ranging from the poorest person’s amount of grain to the richest person’s amount of grain.
+		</p>
+
+		<img src="play/img/moving_agents.gif" width="400" height="400" scrolling="no" style="margin:0 auto;display:block">
+
+		<p>
+			To observe the equity (or the inequity) of the distribution of wealth, a graphical tool called the Lorenz curve is utilized. 
+			We rank the population by their wealth and then plot the percentage of the population that owns each percentage of the wealth (e.g. 30% of the wealth is owned by 50% of the population). 
+			Hence the ranges on both axes are from 0% to 100%.
+		</p>
+
+		<p style="text-align:center">
+			<b>
+			If Lorenz curve is closer towards the diagonal line, the wealth distribution is more equal.
+			</b>
+		</p>
+
+		<img src="play/img/lorenz_curve.gif" width="400" height="400" scrolling="no" style="margin:0 auto;display:block">
+	
+		<p>
+			Let's run the model, a world with no interference and unlimited resource, and see how equal is the wealth distribution.
+		</p>
+
+		<div class="instruction">
+			Click go to run the model.<br>
+		</div>
+	</div>
+
+	<!-- wealth distribution model -->
+	<div class="playable">
+		<iframe playable src="play/model/basic.html" width="1000" height="700"></iframe>
+	</div>
+
+	<!-- CHAPTER -->
+	<div class="chapter"> 
+		<p>
+			And... our society becomes extremely inequal, as most people are in the lower class and very few people are in the middle and upper class.
+		</p>
+		<p>
+			However, our society does not always have large amounts of resources.
+			Sometimes our natural conditions are good, but sometimes they are not.
+			To reflect these changes in the model, we implement seasonal changes in grain growth. 
+			In a good season, the grain growth is good.
+			In a bad season, the growth is bad.
+		</p>
+		
+		<div class="instruction">
+			run this simulation a few times. what happens?
+		</div>
+	</div>
+
+	<!-- grain seasonal growth -->
+	<div class="playable">
+		<iframe playable src="play/model/seasonal_growth.html" width="1000" height="700"></iframe>
+	</div>
+
+	<!-- CHAPTER -->
+	<div class="chapter">
+		<p>
+			It seems that in a good season, gini index is low. 
+			Rich agents are still rich, but poor agents gets poorer.
+		</p>
+
+		<p>
+			But in a bad season, gini index is high.
+			Rich agents are still rich, and poor agents gets richer.
+			It seems that environmental changes have limited impact on rich agents. 
+		</p>
+		
+		<!-- gini for seasonal grain growth -->
+		<img src="play/img/seasonal_change.png" width="400" height="300" scrolling="no" style="margin:0 auto;display:block">
+
+		<p>
+			<strong>Periodic economic cycle can lead to periodic changes in gini index.</strong>
+		</p>
+		<p>	
+			In different countries, different governments have diverse policies on inheritance.
+			What about inheritance? Does inheritance have any impact on gini index?
+		</p>
+		<div class="instruction">
+			use the slider to adjust the percent of wealth that an offspring can inherit:
+		</div>
+	</div>
+
+	<!-- inheritance (single child) -->
+	<div class="playable">
+		<iframe playable src="play/model/inheritance.html" width="1000" height="700"></iframe>
+	</div>
+
+	<!-- CHAPTER -->
+	<div class="chapter">
+		<p>
+			We observe that there is some effect that inheritance has.
+			In fact, if an offspring is allowed to inherit more, the more equal the society.
+			Percent of Inheritance may not have huge impact on agents in upper class, since their wealth is already exceedingly large.
+			But for agents in lower class, more inheritance means larger chance for their offspring to survive.
+		</p>
+
+		<!-- result of inheritance -->
+		<img src="play/img/inheritance.png" width="400" height="300" scrolling="no" style="margin:0 auto;display:block">
+
+		<p>
+			However, in reality, agents may give birth to more than one child.
+			Moreover, the parent's amount that is not inherited by his/her offspring should be given to a tax agency for other usage.
+			Hence, an improved, more realistic model is build.
+			In the model below, agents are not only able to give birth to more than one child, but their inheritance is also taxed based on their respective classes.
+		</p>
+
+		<div class="instruction">
+			inequality is still apparent. what happens when you allow mutliple child-birth and start taxing inheritance? 
+		</div>
+	</div>
+
+	<!-- Inheritance tax_MC -->
+	<div class="playable">
+		<iframe playable src="play/model/inheritance_tax.html" width="1000" height="700"></iframe>
+	</div>
+
+	<!-- CHAPTER -->
+	<div class="chapter">
+		<p>
+			See what <i>doesn't</i> happen? 
+			No change. The wealth distribution is still very inequal.
+			Inheritance tax is not enough. We need to tax harvesting grain on each tick as well.
+		</p>
+		
+		<p>
+			This resembles income tax in the real world.
+			We have set two sliders for you to decide what tax rates should be charged for middle and upper class.
+			You could also try different scenarios that ususally won't happen in reality. 
+			(For example, charge middle higher tax rates than upper class.)
+		</p>
+
+		<div class="instruction">
+			inequality is still apparent. what happens when you allow the tax agency to also charge income tax? 
+		</div>
+	</div>
+
+	<!-- working tax_MC -->
+	<div class="playable">
+		<iframe playable src="play/model/working_tax.html" width="1200" height="700"></iframe>
+	</div>
+
+	<!-- CHAPTER -->
+	<div class="chapter">
+		<p>
+			Wow! Finally we see some improvement on equality, 
+			as we can observe that there are fewer agents in the lower class and number of middle class starts to grow.
+			However, we can do better! We haven't started to use taxpayers' money to improve the wealth distribution.
+		</p>
+
+		<!-- picture of elderly and young children -->
+		<img src="play/img/child_elderly.png" width="500" height="500" scrolling="no" style="margin:0 auto;display:block">
+
+		<p>
+			First, we need to think about young and elderly.
+			They have no working ability (as in, the ability to harvest grains).
+			Therefore, we need to distribute grant to support young children and pension to support elderly.
+
+			Secondly, we need to use the money to support lower class.
+			In our model, we simply redistribute the rest of tax money to lower class. 
+		</p>
+
+		<div class="instruction">
+			inequality can be curbed. what happens when you support the young, the elderly and the poor? 
+		</div>
+	</div>
+
+	<!-- final model -->
+	<div class="playable">
+		<iframe playable src="play/model/final.html" width="1280" height="1000"></iframe>
+	</div>
+
+	<!-- CHAPTER -->
+	<div class="chapter">
+		<p>
+			In the end, we have provided some interesting interactive actions for you to try with the model.
+			What if there is a large amount of international aid coming into the system? 
+		</p>
+
+		<p>
+			What if there is a large amount of international aid coming into the system? 
+			Does international aid improve wealth distribution?
+			Adjust aid amount and click receive aid button when running the model to try it out. 
+		</p>
+
+		<p>
+			What if there is a large disaster that cause some population to die?
+			Does disaster affect wealth distribution?
+			Adjust percent die and click disaster button when running the model to try it out. 
+		</p>
+
+		<p>
+			What if there is a sudden change in the grain environment?
+			Does change of grain environment affect wealth distribution?
+			Click change environment button when running the model to try it out. 
+		</p>
+	</div>
+
+	<!-- final model -->
+	<div class="playable">
+		<iframe playable src="play/model/interactive.html" width="1280" height="1000"></iframe>
+	</div>
+
+	<!-- CHAPTER -->
+	<div class="chapter">
+		<div class="instruction" style="font-size:50px; line-height:50px">
+			WRAPPING UP:
+		</div>
+		<p>
+			<b>1. Economic changes have more impact on the lower class.</b>
+			<br>
+			Changing economic environment does not affect the comfortable life of a wealthy people, 
+			but hugely affect the survival of the poorest.
+		</p>
+		<p>
+			<b>2. Charge taxes improve equality in wealth distribution.</b>
+			<br>
+			Inheritance tax and income tax may seem very little compared to the whole weath of a society,
+			they are effective to diminish inequality and improve the well-being of all.
+		</p>
+		<p>
+			<b>3. Support the young, the elderly, and the poor.</b>
+			<br>
+			Children cannot survive without the support of public, 
+			and grandparents cannnot have a comfortable life without some pensions.
+			When the lower class does not have time and efforts to search for better resources beyond its own survival, 
+			the society needs to provide extra financial support.
+		</p>
+	</div>
+
+	<!-- References &amp; Remixes (Writing|Professor|Infographic|Video|Music -->
+	<div style="width: 100%; background: #222; overflow: hidden; color:#ddd">
+		<div class="chapter">
+			<div class="instruction">
+				Thank you for playing this blog post!
+			</div>
+			<br>
+			<div style="font-size:16px; line-height:18px">
+
+				Our wealth distribution model is based off the work of Uri Wilensky. 
+				Specifically, his 1998 model,
+				<a target="_blank" href="http://ccl.northwestern.edu/netlogo/models/WealthDistribution">Wealth Distribution.</a>
+				We built on top of this, demonstrated the inequality in wealth distribution, 
+				and showed how different approaches can help diminish it.
+
+				<br><br>
+
+				There are other models that have taken different approach on how to model the taxation system.
+				You might enjoy looking at an alternative model with dynamic tax system, such as this one,
+				<a target="_blank" href="http://ccl.northwestern.edu/netlogo/models/community/Wealth%20Distribution2">Wealth Distribution 2.</a>
+
+				<br><br>
+
+				<div style="border-bottom: 2px dashed #666"></div>
+
+				<span style="font-size:18px; line-height:22px">
+
+					<br>
+
+					<b>Thank you to our Prof. Ken Kahn for helping with our project.</b><br>
+				</span>
+
+			</div>
+		</div>
+	</div>
+
+	<!-- SPLASH -->
+	<div id="outro_container">
+		<div id="outro">
+			<iframe src="play/outro/outro.html" id="outro_background" scrolling="no"></iframe>
+		</div>
+	</div>
+
+</body>
+
+</html>
